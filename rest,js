@@ -1,0 +1,23 @@
+const express = require('express');
+const app = express();
+
+app.use(express.json()); // Middleware to parse JSON
+
+// POST route
+app.post('/data', (req, res) => {
+    console.log(req.body);
+    res.send("Data received");
+});
+
+// Import JSON file (assuming it's in the same directory)
+const data = require('./data.json');
+
+// GET route
+app.get('/data', (req, res) => {
+    res.json(data);
+});
+
+// Start server
+app.listen(8000, () => {
+    console.log("Server running on port 3000");
+});
